@@ -3,9 +3,9 @@ import "./index.css"
 import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom"
 import app from '../../config/firebase';
-import { collection, query, onSnapshot, getFirestore, doc, updateDoc } from "firebase/firestore";
+import { collection, query, onSnapshot, getFirestore, doc, where, getDocs, updateDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
-import { Footer, Navbar } from '../../component';
+import { Footer, Navbar ,Profileimg} from '../../component';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 
@@ -30,48 +30,16 @@ const Profile = () => {
             navigate("/Login")
         }
     })
-
-
-    const profileimg = (e) => {
-        e.preventDefault();
-        const storageRef = ref(storage, e.target.files[0].name);
-        const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
-        uploadTask.on('state_changed',
-            (snapshot) => {
-                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                var uploadpercentage = Math.round(progress);
-                setprogress(true)
-                setprogressbar(uploadpercentage)
-            },
-            (error) => {
-            },
-            () => {
-                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                    updateDoc(doc(db, "users", uid), {
-                        profile: downloadURL
-                    }).then(() => {
-                        setprogress(false)
-                    })
-
-                });
-            }
-        );
-
-    }
-
-    const q = query(collection(db, "users"));
-    onSnapshot(q, (querySnapshot) => {
-        const users = [];
+    const users = query(collection(db, "users"), where("uid", "==", uid));
+    const querySnapshot = getDocs(users);
+    const b = onSnapshot(users, (querySnapshot) => {
+        const user = [];
         querySnapshot.forEach((doc) => {
-            users.push(doc.data());
-            users.map((v, i) => {
-                if (v.uid === uid) {
-                    Setuser(v)
-                    setloader(false)
-                }
-            })
+            user.push(doc.data());
+            Setuser(user)
+            setloader(false)
         });
-    });
+    })
 
     return (
         <>
@@ -82,25 +50,20 @@ const Profile = () => {
                     </div>
                     :
                     <>
-                        <Navbar Profile={"active"} />
+                        <Navbar loader={Loader} user={userdata} Profile="active" />
                         <div className='profile-main '>
                             <div className='profilediv-1 col-lg-8 col-12'>
                                 <div className='profileimgdiv'>
                                     <div>
-                                        <img src={userdata.profile} className='profile-user divimg' id='parent2' />
-                                        <label className='editlabel' htmlFor="userprofile"><i className='bx bxs-camera-plus bx-md'></i></label>
-                                        <input type="file" id='userprofile' onChange={(e) => profileimg(e)} />
+                                        <img src={userdata[0].profile} className='profile-user divimg' id='parent2' />
+                                        <Profileimg uid={uid}/>
                                     </div>
 
                                 </div>
-                                {progress &&
-                                    <div className="progress" role="progressbar" aria-label="Warning striped example" >
-                                        <div className="progress-bar progress-bar-striped " style={{ width: progressbar + "%" }}>{progressbar + "%"}</div>
-                                    </div>
-                                }
+                              
                                 <div>
                                     <label>Frist Name</label>
-                                    <input type="text" value={userdata.firstname} onClick={() => {
+                                    <input type="text" value={userdata[0].firstname} onClick={() => {
                                         swal("Frist Name Update:", {
                                             content: "input",
                                         })
@@ -119,7 +82,7 @@ const Profile = () => {
                                 </div>
                                 <div>
                                     <label>Last Name</label>
-                                    <input type="text" value={userdata.LastName} onClick={() => {
+                                    <input type="text" value={userdata[0].LastName} onClick={() => {
                                         swal("Last Name Update:", {
                                             content: "input",
                                         }).then((value) => {
@@ -137,7 +100,7 @@ const Profile = () => {
                                 </div>
                                 <div>
                                     <label>Mobile Numbar</label>
-                                    <input type="number" value={userdata.Mobilenumber} onClick={() => {
+                                    <input type="number" value={userdata[0].Mobilenumber} onClick={() => {
                                         swal("Last Name Update:", {
                                             content: "input",
                                         }).then((value) => {
@@ -155,7 +118,7 @@ const Profile = () => {
                                 </div>
                                 <div>
                                     <label>Email Address</label>
-                                    <input disabled type="email" value={userdata.Email} />
+                                    <input disabled type="email" value={userdata[0].Email} />
                                 </div>
 
                             </div>

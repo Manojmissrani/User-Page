@@ -14,7 +14,6 @@ const storage = getStorage(app);
 const CreatePost = () => {
     const navigate = useNavigate()
     const [Title, setTitle] = useState("")
-    const [uid, setuid] = useState("")
     const [Description, setDescription] = useState("")
     const [Category, setCategory] = useState("Select Category")
     const [url, seturl] = useState("")
@@ -23,16 +22,22 @@ const CreatePost = () => {
     const [messagetype, setmessagetype] = useState()
     const [progress, setprogress] = useState(false)
     const [progreful, setprogreful] = useState(false)
+    const [User, setuser] = useState([])
+    const [loader, setloader] = useState(true)
+    const [uid, Setuid] = useState("")
+
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
             if (user.emailVerified) {
-                setuid(user.uid)
+                Setuid(user.uid)
             }
         } else {
             navigate("/Login")
         }
     })
+
+
     const imgupload = (e) => {
         e.preventDefault();
         const storageRef = ref(storage, e.target.files[0].name);
@@ -93,7 +98,7 @@ const CreatePost = () => {
     }
     return (
         <>
-            <Navbar create={"active"} />
+            <Navbar loader={loader} user={User} create="active" />
             <div className='create-post-main-div'>
                 <div className='div-2'>
                     <label>Title</label><br />

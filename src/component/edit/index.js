@@ -87,36 +87,6 @@ function Example(props) {
                         <small id="helpId" className="form-text text-muted">0/2500</small>
 
                     </div>
-                    {/* <Form>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Title</Form.Label>
-                            <Form.Control
-                                value={title}
-                                type="text"
-                                onChange={(e) => settitle(e.target.value)}
-                                placeholder="Title"
-                                autoFocus
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Select Category</Form.Label>
-                            <Form.Select value={cat} onChange={(event) => setcat(event.target.value)} >
-                                <option>Select Category</option>
-                                <option>WordPress</option>
-                                <option>Web Development</option>
-                                <option>App Development</option>
-                                <option>Freelancing</option>
-                            </Form.Select>
-                        </Form.Group>
-                        <Form.Group
-                            className="mb-3"
-                            controlId="exampleForm.ControlTextarea1"
-                        >
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control as="textarea" rows={3} value={des} onChange={(e) => setdes(e.target.value)} />
-                        </Form.Group>
-
-                    </Form> */}
                     <p style={{ color: messagetype === "error" ? "red" : "green", fontWeight: "bold" }}>{message}</p>
 
                 </Modal.Body>

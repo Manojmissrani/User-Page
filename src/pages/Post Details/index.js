@@ -15,9 +15,13 @@ const PostDetails = () => {
     const navigate = useNavigate()
     const params = useParams();
     const location = useLocation();
-    const [Loader, setloader] = useState(true)
+    const [loaderuser, setloaderuser] = useState(true)
+    const [loader, setloader] = useState(true)
     const [Blog, setBlog] = useState([])
-    const [uid, Setuid] = useState([])
+    const [user, setuser] = useState([])
+    const [uid, Setuid] = useState("")
+
+
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -40,6 +44,18 @@ const PostDetails = () => {
             });
         })
     }, [])
+
+
+    const users = query(collection(db, "users"), where("uid", "==", uid));
+    const querySnapshot = getDocs(users);
+    const b = onSnapshot(users, (querySnapshot) => {
+        const user = [];
+        querySnapshot.forEach((doc) => {
+            user.push(doc.data());
+            setuser(user)
+            setloaderuser(false)
+        });
+    })
 
 
     const deletebutton = () => {
@@ -71,11 +87,12 @@ const PostDetails = () => {
     return (
         <>
             {
-                Loader ? <div className='loaderdiv d-flex align-items-center justify-content-center h-100 w-100' >
-                    <img src="https://cdn.dribbble.com/users/1787505/screenshots/7300251/media/a351d9e0236c03a539181b95faced9e0.gif" />
-                </div> :
+                loader ?
+                    <div className='loaderdiv d-flex align-items-center justify-content-center h-100 w-100' >
+                        <img src="https://cdn.dribbble.com/users/1787505/screenshots/7300251/media/a351d9e0236c03a539181b95faced9e0.gif" />
+                    </div> :
                     <>
-                        <Navbar />
+                        <Navbar loader={loaderuser} user={user} create="active" />
                         <div className="row align-items-center mt-4 pb-5">
                             {
                                 Blog.map((v, i) => {
