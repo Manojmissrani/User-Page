@@ -9,7 +9,7 @@ const db = getFirestore(app);
 
 const Navbar = (props) => {
     const navigate = useNavigate()
-    const [users, setuser] = useState([])
+    const [User, setuser] = useState([])
     const [loader, setloader] = useState(true)
     const [uid, Setuid] = useState("")
 
@@ -23,21 +23,23 @@ const Navbar = (props) => {
             navigate("/Login")
         }
 
-        const users = query(collection(db, "users"), where("uid", "==", uid));
-        const querySnapshot = getDocs(users);
-        const b = onSnapshot(users, (querySnapshot) => {
-            const user = [];
-            querySnapshot.forEach((doc) => {
-                user.push(doc.data());
-                setuser(user)
-                setloader(false)
-                    if (user[0].stats === "Pending") {
-                        navigate("/Waitingforapproval")
-                    } if (user[0].stats === "Rejected") {
-                        navigate("/Rejected")
-                    }
-            });
-        })
+
+    })
+
+    const users = query(collection(db, "users"), where("uid", "==", uid));
+    const querySnapshot = getDocs(users);
+    const b = onSnapshot(users, (querySnapshot) => {
+        const user = [];
+        querySnapshot.forEach((doc) => {
+            user.push(doc.data());
+            setuser(user)
+            setloader(false)
+            if (user[0].stats === "Pending") {
+                navigate("/Waitingforapproval")
+            } if (user[0].stats === "Rejected") {
+                navigate("/Rejected")
+            }
+        });
     })
 
     const Logout = () => {
@@ -55,19 +57,19 @@ const Navbar = (props) => {
 
             {
                 loader ? "" :
-                    <label className="logo"> 
-                    <img src={users[0].profile} className="img-logo" />
-                    {users[0].firstname+" "+users[0].LastName}</label>
+                    <label className="logo">
+                        <img src={User[0].profile} className="img-logo" />
+                        {User[0].firstname + " " + User[0].LastName}</label>
 
             }
             <ul>
 
-                
+
                 <li><a className={props.Home} onClick={() => navigate("/")}>Home</a></li>
                 <li><a className={props.create} onClick={() => navigate("/Create-Post")}>Create Post</a></li>
                 <li><a className={props.Profile} onClick={() => navigate("/Profile")}>Profile</a></li>
                 <li><a onClick={Logout}>Logout</a></li>
-              
+
             </ul>
         </nav>
     )

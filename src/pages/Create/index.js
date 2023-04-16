@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react'
-import Navbar from '../../component/Navbar'
 import "./index.css"
 import app from '../../config/firebase';
 import { getFirestore, addDoc, collection, updateDoc, doc } from "firebase/firestore";
@@ -7,7 +5,8 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom"
 import moment from 'moment';
-import { Footer } from '../../component';
+import { Footer, Navbar } from '../../component';
+import { useState } from "react";
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
@@ -15,17 +14,25 @@ const storage = getStorage(app);
 const CreatePost = () => {
     const navigate = useNavigate()
     const [Title, setTitle] = useState("")
-    const [uid, setuid] = useState()
+    const [uid, setuid] = useState("")
     const [Description, setDescription] = useState("")
     const [Category, setCategory] = useState("Select Category")
     const [url, seturl] = useState("")
-    const [progressbar, setprogressbar] = useState()
-    const [message, setmessage] = useState()
+    const [progressbar, setprogressbar] = useState("")
+    const [message, setmessage] = useState("")
     const [messagetype, setmessagetype] = useState()
     const [progress, setprogress] = useState(false)
     const [progreful, setprogreful] = useState(false)
 
-
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            if (user.emailVerified) {
+                setuid(user.uid)
+            }
+        } else {
+            navigate("/Login")
+        }
+    })
     const imgupload = (e) => {
         e.preventDefault();
         const storageRef = ref(storage, e.target.files[0].name);
@@ -47,16 +54,14 @@ const CreatePost = () => {
                 });
             }
         );
-
     }
-
-   
 
     const Create = () => {
         if (Title === "") {
             setmessage("Title Required!")
             setmessagetype("error")
-        } else if (Category === "Select Category") {
+        }
+        else if (Category === "Select Category") {
             setmessage("Category Required!")
             setmessagetype("error")
         }
@@ -68,14 +73,13 @@ const CreatePost = () => {
             setmessagetype("error")
         }
         else {
-            const docRef = addDoc(collection(db, "Blogs"), {
+            const a = addDoc(collection(db, "Blogs"), {
                 Title: Title,
                 Description: Description,
                 Category: Category,
                 url: url,
                 uid: uid,
                 stats: "Pending",
-                id: "",
                 date: moment(new Date).format('LLL')
             }).then((res) => {
                 const washingtonRef = doc(db, "Blogs", res.id);
@@ -122,9 +126,9 @@ const CreatePost = () => {
                         </div>}
 
                     <br />
-                    <p style={{ color: messagetype === "error" ? "red" : "green", fontWeight: "bold" }}>{message}</p>
+                    <p style={{ color: messagetype === "error" ? "red" : "green" }}>{message}</p>
 
-                    <button className='createbtn w-100' onClick={Create}> Create</button>
+                    <button className='createbtn  w-100' onClick={Create}> Create</button>
 
                 </div>
             </div>

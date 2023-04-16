@@ -12,7 +12,7 @@ const Emailverification = () => {
         if (user) {
             setuser(user)
             if (user.emailVerified) {
-                navigate("/")
+                navigate("/Waitingforapproval")
             } else {
                 setemailtext(user.email)
             }
@@ -21,10 +21,7 @@ const Emailverification = () => {
         }
     })
     const recend = () => {
-        sendEmailVerification(auth.user)
-            .then(() => {
-                console.log("Email verification sent!")
-            });
+  
     }
 
 

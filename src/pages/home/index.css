@@ -19,6 +19,14 @@
     margin-left: calc(-.5 * var(--bs-gutter-x));
 }
 
-.px-10{
+.px-10 {
     padding: 0px 70px;
+}
+
+.carddiv {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }

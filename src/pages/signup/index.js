@@ -75,7 +75,6 @@ const Signup = () => {
                                 stats: "Pending",
                                 profile: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR30SfNCE6e-sM7qSa8Z9CwrktkRgrjbHKyeSh3VyZDrsXLDVW0uHVcjmeki6bBSwQnqWo&usqp=CAU"
                             };
-                            console.log(userCredential)
                             setDoc(doc(db, "users", userCredential.user.uid), docData).then(() => {
                                 navigate("/Emailverification")
                             })
@@ -83,14 +82,11 @@ const Signup = () => {
                             setmessagetype("success")
                         });
                 })
-
         }
-
     }
-
     return (
-        <div>
-            <div className="container row align-items-center bgcolorlogin justify-content-center">
+        <div className='a'>
+            <div className="container row align-items-center  justify-content-center">
                 <div className='form col-lg-5 col-md-8 col-ms-8'>
                     <h2 className='signup-h2'>Sign Up</h2>
                     <div className="form-group">

@@ -16,15 +16,19 @@ const PostDetails = () => {
     const params = useParams();
     const location = useLocation();
     const [Loader, setloader] = useState(true)
-    const [uid, Setuid] = useState("")
-    const [Title, setTitle] = useState("")
-    const [des, setdes] = useState("")
-    const [category, setcategory] = useState("Select Category")
-
-
     const [Blog, setBlog] = useState([])
+    const [uid, Setuid] = useState([])
 
     useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                if (user.emailVerified) {
+                    Setuid(user.uid)
+                }
+            } else {
+                navigate("/Login")
+            }
+        })
         const q = query(collection(db, "Blogs"), where("id", "==", params.id));
         const querySnapshot = getDocs(q);
         const a = onSnapshot(q, (querySnapshot) => {
@@ -37,15 +41,7 @@ const PostDetails = () => {
         })
     }, [])
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            if (user.emailVerified) {
-                Setuid(user.uid)
-            }
-        } else {
-            navigate("/Login")
-        }
-    })
+
     const deletebutton = () => {
         swal({
             title: "Are you sure?",

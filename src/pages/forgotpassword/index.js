@@ -6,7 +6,6 @@ const auth = getAuth(app);
 
 const ForgotPassword = () => {
     const navigate = useNavigate()
-    // usest
     const [emailforgot, setemailforgot] = useState("")
     const [message, setmessage] = useState("")
     const [messagetype, setmessagetype] = useState("")
@@ -49,7 +48,6 @@ const ForgotPassword = () => {
                         <input type="email" value={emailforgot} onChange={(e) => setemailforgot(e.target.value)} className="form-contro" placeholder="Email Address " />
                     </div>
                     <div style={{ textAlign: "right", marginBottom: "15px" }}>
-                        {/* <span className='spanloginbtn' style={{ fontWeight: "bold" }}>Forgot Password?</span> */}
                     </div>
                     <p style={{ color: messagetype === "error" ? "red" : "green" }}>{message}</p>
                     <button onClick={Forgot} className="btn btn-primary">Request Password Reset</button>
