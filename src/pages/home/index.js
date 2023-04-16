@@ -45,28 +45,27 @@ const Home = () => {
     })
 
 
+    // onAuthStateChanged(auth, (user) => {
     onAuthStateChanged(auth, (user) => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                if (user.emailVerified) {
-                    Setuid(user.uid)
-                    const q = query(collection(db, "Blogs"));
-                    const a = onSnapshot(q, (querySnapshot) => {
-                        const blog = [];
-                        querySnapshot.forEach((doc) => {
-                            blog.push(doc.data());
-                            setloader(false)
-                            setBlog(blog)
-                        })
-                    });
-                }
-            } else {
-                navigate("/Login")
+        if (user) {
+            if (user.emailVerified) {
+                Setuid(user.uid)
+                const q = query(collection(db, "Blogs"));
+                const a = onSnapshot(q, (querySnapshot) => {
+                    const blog = [];
+                    querySnapshot.forEach((doc) => {
+                        blog.push(doc.data());
+                        setloader(false)
+                        setBlog(blog)
+                    })
+                });
             }
-        })
-
-
+        } else {
+            navigate("/Login")
+        }
     })
+    // })
+
     return (
         <>
             {

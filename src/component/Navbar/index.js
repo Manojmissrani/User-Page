@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import "./index.css"
-
+import app from '../../config/firebase'
+import { getAuth, signOut } from 'firebase/auth'
+const auth = getAuth(app)
 const Navbar = (props) => {
     const navigate = useNavigate()
+
+    const Logout = () => {
+        signOut(auth).then(() => {
+            navigate("/Login")
+        }).catch((error) => {
+        });
+    }
+
     return (
         <nav>
             <input type="checkbox" id="check" />
@@ -22,7 +32,7 @@ const Navbar = (props) => {
                 <li><a className={props.Home} onClick={() => navigate("/")}>Home</a></li>
                 <li><a className={props.create} onClick={() => navigate("/Create-Post")}>Create Post</a></li>
                 <li><a className={props.Profile} onClick={() => navigate("/Profile")}>Profile</a></li>
-                <li><a onClick={props.Logout}>Logout</a></li>
+                <li><a onClick={Logout}>Logout</a></li>
 
             </ul>
         </nav>

@@ -92,7 +92,7 @@ const PostDetails = () => {
                         <img src="https://cdn.dribbble.com/users/1787505/screenshots/7300251/media/a351d9e0236c03a539181b95faced9e0.gif" />
                     </div> :
                     <>
-                        <Navbar loader={loaderuser} user={user} create="active" />
+                        <Navbar loader={loaderuser} user={user}  />
                         <div className="row align-items-center mt-4 pb-5">
                             {
                                 Blog.map((v, i) => {

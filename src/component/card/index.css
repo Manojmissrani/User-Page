@@ -26,6 +26,7 @@ select{
 .card-img-top {
     width: 100%;
     cursor: pointer;
+    min-width: 300px;
     max-height: 350px;
     object-fit: cover;
 }
