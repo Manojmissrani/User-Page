@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.div-main-card {
+    display: flex;
+    padding: 20px 40px;
+    flex-wrap: wrap;
+}
+
+select{
+    box-shadow: none !important;
+}
+
+.card-img-top {
+    width: 100%;
+    cursor: pointer;
+    max-height: 350px;
+    object-fit: cover;
+}
+
+
+.card {
+    padding: 5px;
+    border: none;
+}
+
+.card>div {
+    transition: 1s;
+}
+
+.card>div:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+}
+
+.Category {
+    margin: 15px 0px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.pointer {
+    cursor: pointer;
+}
+
+p {
+    margin-bottom: 0px;
+}
+
+.card>div {
+    border-radius: 10px;
+    border: 2px solid #5468ff;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.img-profile {
+    display: flex;
+    align-items: center;
+}
+
+.img-profile>img {
+    border-radius: 100px;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+h5 {
+    margin-bottom: 5px;
+}
+
+.name-date {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+}
+
+.name-date>p {
+    margin-bottom: 0px;
+}
+
+
+.fa-xl {
+    font-size: 3em !important;
+    line-height: auto !important;
+    vertical-align: -0.1875em !important;
+}
+
+.col-auto {
+    display: flex;
+    align-items: center;
+}
+
+.a1 {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px !important;
+}
+
+#Approved {
+    border: 3px solid rgba(14, 149, 11, 1);
+    background-color: rgba(72, 184, 70, 0.673);
+}
+
+#Rejected {
+    border: 3px solid rgba(251, 19, 19, 0.729);
+    background: #ffe0d9;
+}
+
+#Pending {
+    border: 3px solid rgba(255, 139, 44, 1);
+    background: #fff7cd;
+}
+
+#All {
+    border: 3px solid #0c53b7;
+
+    background-color: #d0f2ff;
+}
+
+
+
+#All>div>div>i {
+    color: #0c53b7;
+}
+
+#Approved>div>div>i {
+    color: rgba(14, 149, 11, 1);
+}
+
+#Rejected>div>div>i {
+    color: rgba(251, 19, 19, 0.729);
+}
+
+#Pending>div>div>i {
+    color: rgba(255, 139, 44, 1);
+}

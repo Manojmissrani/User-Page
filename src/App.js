@@ -1,23 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-
+import RouterNavigation from './config/router';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="scrollbar" id="style-11">
+      <div className="force-overflow">
+        <RouterNavigation />
+      </div>
     </div>
   );
 }

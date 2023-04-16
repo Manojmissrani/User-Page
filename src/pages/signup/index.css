@@ -1,0 +1,95 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
+  max-width: 500px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form {
+  border: 1px solid #5468ff;
+  background-color: #fff;
+  padding: 20px;
+  font-family: "Quicksand", sans-serif;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+
+.signup-h2 {
+  text-align: center;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+
+.form-contro {
+  width: 100%;
+  outline: none;
+  padding: 6px 14px;
+  border-radius: 5px;
+  color: rgb(127, 132, 132) !important;
+  font-weight: bold;
+  border: 1px solid #5468ff;
+}
+
+.mainlogindiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.form-control::placeholder {
+  color: rgb(127, 132, 132) !important;
+
+}
+
+.btn-primary {
+  background-color: #5468ff;
+  border-color: #5468ff;
+  width: 100%;
+  transition: 1s;
+}
+
+.spanloginbtn {
+  color: #5468ff;
+  cursor: pointer;
+}
+
+.spanloginbtn:hover {
+  text-decoration: underline;
+}
+
+.loginspandiv {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.loginspandiv>h6 {
+  font-weight: bold;
+
+}
+
+.btn-primary:hover {
+  background-color: #5468ff;
+  border-color: #5468ffea;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}

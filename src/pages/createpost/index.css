@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main-div-create {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 100px 0px;
+    padding-bottom: 0px;
+}
+
+.Stats-card {
+    border: 2px solid #5468ff;
+    padding: 25px;
+    text-align: center;
+}
+
+.Stats-card>h4 {
+    font-weight: bolder;
+    font-size: 19px;
+}
+
+.create-post-main-div {
+    width: 100%;
+    margin-top: 0px !important;
+    min-height: 100vh !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ebf0f0d0;
+    height: auto;
+}
+
+.div-2 {
+    padding: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 50%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+
+.div-2>input {
+    outline: none;
+    width: 100%;
+    padding: 8px 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border: 1px solid #5468ff;
+    color: #8d8787;
+}
+
+.div-2>textarea {
+    outline: none;
+    width: 100%;
+    padding: 8px 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border: 1px solid #5468ff;
+    color: #8d8787;
+    height: 25vh;
+}
+
+.select {
+    outline: none;
+    width: 100%;
+    padding: 8px 10px;
+    color: #8d8787 !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px !important;
+    border: 1px solid #5468ff;
+}
+
+option {
+    color: black;
+}
+
+.selectnone {
+    color: #545151;
+}
+
+.filebutton {
+    overflow: hidden;
+}
+
+
+._upload {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    width: 100%;
+    border: 1px solid #5468ff;
+    outline: none;
+    color: #8d8787;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 10px;
+}
+
+/* label {
+    display: block!important;
+    margin: 0!important;
+}  */
+input[type=file] {
+    display: none;
+}
+
+input {
+    overflow: visible;
+}
+
+.createbtndiv {
+    width: 100%;
+    text-align: right;
+}
+
+.createbtn {
+    background-color: #5468ff;
+    color: white;
+    padding: 8px 46px;
+    transition: 1s;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+
+.progress-bar {
+    /* color: #5468ff; */
+    background-color: #5468ff;
+}
+
+@media screen and (max-width: 1300px) {
+    .navbar-nav .nav-link {
+        padding-right: 0px !important;
+    }
+
+    .logoname {
+        width: 64%;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .navbar-nav .nav-link {
+        padding-right: 0px !important;
+    }
+
+    .logoname {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .navbar-nav .nav-link {
+        padding-right: 0px !important;
+    }
+
+    .logoname {
+        width: 58%;
+    }
+
+    .div-2 {
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .div-2 {
+        width: 60%;
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .div-2 {
+        width: 70%;
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .div-2 {
+        width: 85%;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        padding: 25px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .div-2 {
+        margin-top: 100px;
+        margin-bottom: 50px;
+        padding: 15px;
+        width: 95%;
+    }
+}
